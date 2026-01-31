@@ -1,0 +1,161 @@
+<html>
+<head>
+    <title>Web Development Quiz</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            background: white;
+            width: 380px;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #1f2933;
+        }
+
+        .option {
+            display: block;
+            background: #e5e7eb;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #d1d5db;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+    <h2 id="question">Question</h2>
+
+    <label class="option">
+        <input type="radio" name="answer" value="a"> <span id="opt1"></span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="answer" value="b"> <span id="opt2"></span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="answer" value="c"> <span id="opt3"></span>
+    </label>
+
+    <button onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: "What does HTML stand for?",
+            options: [
+                "Hyper Text Markup Language",
+                "High Text Machine Language",
+                "Hyperlinks and Text Mark Language"
+            ],
+            answer: "a"
+        },
+        {
+            question: "Which property is used to change text color in CSS?",
+            options: [
+                "font-style",
+                "color",
+                "text-decoration"
+            ],
+            answer: "b"
+        },
+        {
+            question: "Which language is used to add interactivity to a website?",
+            options: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            answer: "c"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    loadQuestion();
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        document.getElementById("question").innerText = q.question;
+        document.getElementById("opt1").innerText = q.options[0];
+        document.getElementById("opt2").innerText = q.options[1];
+        document.getElementById("opt3").innerText = q.options[2];
+
+        document.querySelectorAll('input[name="answer"]').forEach(el => el.checked = false);
+    }
+
+    function nextQuestion() {
+        const selected = document.querySelector('input[name="answer"]:checked');
+
+        if (!selected) {
+            alert("Please select an answer");
+            return;
+        }
+
+        if (selected.value === questions[currentQuestion].answer) {
+            score++;
+        }
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.querySelector(".quiz-container").innerHTML = `
+            <div class="result">
+                <h2>Quiz Completed</h2>
+                <p>Your Score: ${score} / ${questions.length}</p>
+                <p>Good job! Keep practicing.</p>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

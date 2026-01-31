@@ -1,0 +1,178 @@
+<html>
+<head>
+
+<title>Project Management Tool</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f3f4f6;
+    }
+
+    header {
+        background-color: #1f2933;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .add-project {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    input, select, button {
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    button {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #1d4ed8;
+    }
+
+    .project {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .task {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #e5e7eb;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 8px;
+    }
+
+    .status {
+        font-size: 13px;
+        padding: 5px 10px;
+        border-radius: 12px;
+        background: #9ca3af;
+        color: white;
+    }
+
+    .completed {
+        background: #16a34a;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 15px;
+        background: #1f2933;
+        color: white;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Project Management Tool</h1>
+    <p>Track projects and tasks easily</p>
+</header>
+
+<div class="container">
+
+    <div class="add-project">
+        <h2>Create New Project</h2>
+        <input type="text" id="projectName" placeholder="Project name">
+        <input type="text" id="taskName" placeholder="Task name">
+        <select id="taskStatus">
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <button onclick="addProject()">Add Project</button>
+    </div>
+
+    <div id="projectList"></div>
+
+</div>
+
+<div class="footer">
+    © 2026 Project Management Tool | CODSOFT Internship
+</div>
+
+<script>
+    let projects = [];
+
+    function addProject() {
+        let projectInput = document.getElementById("projectName");
+        let taskInput = document.getElementById("taskName");
+        let statusInput = document.getElementById("taskStatus");
+
+        if (projectInput.value === "" || taskInput.value === "") {
+            alert("Please enter project and task name");
+            return;
+        }
+
+        let project = {
+            name: projectInput.value,
+            tasks: [
+                {
+                    task: taskInput.value,
+                    status: statusInput.value
+                }
+            ]
+        };
+
+        projects.push(project);
+
+        projectInput.value = "";
+        taskInput.value = "";
+        renderProjects();
+    }
+
+    function renderProjects() {
+        let projectList = document.getElementById("projectList");
+        projectList.innerHTML = "";
+
+        projects.forEach((project, index) => {
+            let projectDiv = document.createElement("div");
+            projectDiv.className = "project";
+
+            let html = `<h3>${project.name}</h3>`;
+
+            project.tasks.forEach(task => {
+                html += `
+                    <div class="task">
+                        <span>${task.task}</span>
+                        <span class="status ${task.status === "Completed" ? "completed" : ""}">
+                            ${task.status}
+                        </span>
+                    </div>
+                `;
+            });
+
+            projectDiv.innerHTML = html;
+            projectList.appendChild(projectDiv);
+        });
+    }
+</script>
+
+</body>
+</html>
