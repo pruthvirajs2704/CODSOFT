@@ -1,0 +1,145 @@
+<html>
+<head>
+    <title>Simple Landing Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #1f2933;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #555;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .hero button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .hero button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .features {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 10px;
+            color: #1f2933;
+        }
+
+        footer {
+            background-color: #1f2933;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>MyWebsite</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Build Simple & Clean Websites</h2>
+    <p>
+        This landing page is designed using HTML and CSS.
+        It focuses on clean layout, readability, and a simple user experience.
+    </p>
+    <button>Get Started</button>
+</section>
+
+<section class="features">
+    <div class="feature-box">
+        <h3>Easy to Use</h3>
+        <p>
+            Simple structure and clean design make this website easy to understand and use.
+        </p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Responsive Layout</h3>
+        <p>
+            The layout adjusts automatically for different screen sizes.
+        </p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Modern Design</h3>
+        <p>
+            Uses modern fonts, spacing, and colors for a professional look.
+        </p>
+    </div>
+</section>
+
+<footer>
+    © 2026 MyWebsite | CODSOFT Web Development Internship
+</footer>
+
+</body>
+</html>
